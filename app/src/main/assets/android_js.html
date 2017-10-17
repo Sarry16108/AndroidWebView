@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <meta charset="utf-8">
+      <title>Carson_Ho</title>
+	  
+     <script>
+	// Android需要调用的方法
+   function callJS1(){
+      alert("Android has called JS's callJS");
+   }
+   
+     function callJS(v1, v2){
+      alert(v1 + "Android has called JS's callJS" + v2);
+	  return v1 + v2;
+   }
+   
+    function clickprompt(){
+    // 调用prompt（）
+    var result=prompt("js://android?func=getLocalInfo&arg1=111&arg2=222");
+    alert(result);
+	}
+
+</script>
+
+   </head>
+
+    <body>
+     <button type="button" id="button1" onclick="clickprompt()">call Android</button>
+   </body>
+   
+</html>
