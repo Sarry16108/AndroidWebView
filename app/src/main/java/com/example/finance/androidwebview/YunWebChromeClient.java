@@ -44,7 +44,8 @@ public class YunWebChromeClient extends WebChromeClient {
     }
 
     /**
-     *
+     *  注意：1、如果js调用本地方法打开一个新的包含webview的activity，那么返回h5端后该方法内不能弹出alert，会阻断新activity正常地加载。
+     *        2、result.confirm必须调用，否则h5不能回调
      * @param view
      * @param url
      * @param message
@@ -61,12 +62,11 @@ public class YunWebChromeClient extends WebChromeClient {
             Log.d("JS", "uri:" + uri.toString() + "  url:" + url + " defaultValue:" + defaultValue + " result:" + result.toString());
 
             String func = uri.getQueryParameter("func");
+            String value = null;
             if (!TextUtils.isEmpty(func)) {
-                String value = mJsCallback.onFuncationFinished(func, uri);
-                if (!TextUtils.isEmpty(value)) {
-                    result.confirm(value);
-                }
+                value = mJsCallback.onFuncationFinished(func, uri);
             }
+            result.confirm(value);
 
             return true;
         }
@@ -80,4 +80,5 @@ public class YunWebChromeClient extends WebChromeClient {
      */
 
     public static final String JavaLocalInfo = "getLocalInfo";
+    public static final String JavaStartActivity = "toNewActivity";
 }

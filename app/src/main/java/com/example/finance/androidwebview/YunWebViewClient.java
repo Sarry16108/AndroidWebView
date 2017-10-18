@@ -5,6 +5,7 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -14,7 +15,7 @@ import android.webkit.WebViewClient;
  * Email: yanghj11@163.com
  * Date: 2017/10/16
  */
- 
+
 public class YunWebViewClient extends WebViewClient {
 
     private WebView mWebView;
@@ -40,6 +41,11 @@ public class YunWebViewClient extends WebViewClient {
         }
 
         return super.shouldOverrideUrlLoading(view, url);
+    }
+
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        return super.shouldOverrideUrlLoading(view, request);
     }
 
     @Override
