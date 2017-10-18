@@ -142,4 +142,11 @@ public class SecondActivity extends FragmentActivity  implements ValueCallback<S
         intent.putExtra("remoteUrl", "http://wap.baidu.com");
         startActivity(intent);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //释放缓存
+        mWebView.clearCache(true);
+    }
 }
