@@ -6,14 +6,17 @@
       <title>Carson_Ho</title>
 	  
      <script>
-	// Android需要调用的方法
+	// Android需要调用的方法，返回结果为json格式，func是方法名。
    function callJS1(){
       alert("Android has called JS's callJS");
+	  return {'func':'callJS1','age':17,'occupation':'teacher'};
    }
    
      function callJS(v1, v2){
       alert(v1 + "Android has called JS's callJS" + v2);
-	  return v1 + v2;
+	  var tmp = v1 + v2;
+	  var json = {'func':'callJS','age': tmp};
+	  return json;
    }
    
     function clickprompt(){

@@ -91,11 +91,21 @@ public class SecondActivity extends FragmentActivity  implements ValueCallback<S
 
     /**
      * 本地调用h5后，h5返回的js处理值。
-     * @param value
+     * @param value   是Json字符串，里面包含func和其他的参数值
      */
     @Override
     public void onReceiveValue(String value) {
         Log.d("JS", "js return value:" + value);
+
+        BaseResponse baseResponse = GsonUtils.castJsonObject(value, BaseResponse.class);
+        switch (baseResponse.getFunc()) {
+            case YunWebViewClient.JsCallJS1:
+                Log.d("JS", GsonUtils.castJsonObject(value, CallJsResp.class).toString());
+                break;
+            case YunWebViewClient.JsCallJS:
+                Log.d("JS", GsonUtils.castJsonObject(value, CallJsResp.class).toString());
+                break;
+        }
     }
 
     /**
