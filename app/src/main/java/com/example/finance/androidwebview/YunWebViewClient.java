@@ -9,9 +9,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 /**
- * Created by Administrator on 2017/10/16.
+ * Description:
+ * Creator: Yanghj
+ * Email: yanghj11@163.com
+ * Date: 2017/10/16
  */
-
+ 
 public class YunWebViewClient extends WebViewClient {
 
     private WebView mWebView;
@@ -109,4 +112,12 @@ public class YunWebViewClient extends WebViewClient {
 
         return builder.append(")").toString();
     }
+
+
+    /****************************************************
+     *   java调用js方法，协定的方法名
+     */
+
+    public static final String JsCallJS1 = "callJS1";
+    public static final String JsCallJS  = "callJS";
 }

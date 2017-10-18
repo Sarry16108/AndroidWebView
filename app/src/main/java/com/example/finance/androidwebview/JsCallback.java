@@ -3,7 +3,10 @@ package com.example.finance.androidwebview;
 import android.net.Uri;
 
 /**
- * Created by Administrator on 2017/10/16.
+ * Description:
+ * Creator: Yanghj
+ * Email: yanghj11@163.com
+ * Date: 2017/10/16
  */
 
 public interface JsCallback {

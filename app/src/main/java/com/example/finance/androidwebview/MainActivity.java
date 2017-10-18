@@ -41,15 +41,15 @@ public class MainActivity extends AppCompatActivity implements ValueCallback<Str
         webSettings.setAllowFileAccess(false);
 
         // 禁止 file 协议加载 JavaScript
-//        if (mRemoteUrl.startsWith("file://")) {
-//            webSettings.setJavaScriptEnabled(false);
-//        } else {
+        if (mRemoteUrl.startsWith("file://")) {
+            webSettings.setJavaScriptEnabled(false);
+        } else {
             webSettings.setJavaScriptEnabled(true);
-//        }
+        }
 
         mWebView.setWebChromeClient(new YunWebChromeClient(mProgressBar, this));
         mWebViewClient = new YunWebViewClient(mWebView, this);
-        mWebViewClient.setInitCall("callJS1");
+        mWebViewClient.setInitCall(YunWebViewClient.JsCallJS1);
         mWebView.setWebViewClient(mWebViewClient);
 
         mWebView.loadUrl(mRemoteUrl);
@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity implements ValueCallback<Str
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button1:
-                mWebViewClient.makeCallJs("callJS1");
+                mWebViewClient.makeCallJs(YunWebViewClient.JsCallJS1);
 
                 break;
             case R.id.button2:
-                mWebViewClient.makeCallJs("callJS", 3, 5);
+                mWebViewClient.makeCallJs(YunWebViewClient.JsCallJS, 3, 5);
                 break;
             case R.id.back:
                 if (mWebView.canGoBack()) {
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements ValueCallback<Str
     @Override
     public String onFuncationFinished(String function, Uri uri) {
         switch (function) {
-            case "getLocalInfo":
+            case YunWebChromeClient.JavaLocalInfo:
                 return getLocalInfo(uri.getQueryParameter("arg1"), uri.getQueryParameter("arg2"));
         }
 

@@ -10,7 +10,10 @@ import android.webkit.WebView;
 import android.widget.ProgressBar;
 
 /**
- * Created by Administrator on 2017/10/16.
+ * Description:
+ * Creator: Yanghj
+ * Email: yanghj11@163.com
+ * Date: 2017/10/16
  */
 
 public class YunWebChromeClient extends WebChromeClient {
@@ -70,4 +73,11 @@ public class YunWebChromeClient extends WebChromeClient {
 
         return super.onJsPrompt(view, url, message, defaultValue, result);
     }
+
+
+    /****************************************************
+     *   h5调用java方法，协定的方法名
+     */
+
+    public static final String JavaLocalInfo = "getLocalInfo";
 }
